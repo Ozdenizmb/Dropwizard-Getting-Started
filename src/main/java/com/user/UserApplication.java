@@ -32,6 +32,8 @@ public class UserApplication extends Application<UserConfiguration> {
     @Override
     public void run(final UserConfiguration configuration, final Environment environment) {
         // TODO: implement application
+
+        // Flayway komutlarini calisir hale getirme
         Flyway flyway = Flyway.configure()
                 .dataSource(configuration.getDatabase().getUrl(),
                         configuration.getDatabase().getUser(),
@@ -40,6 +42,7 @@ public class UserApplication extends Application<UserConfiguration> {
                 .load();
         flyway.migrate();
 
+        // JDBI'nin ilgili veritabaninda etkin olmasi saglandi
         Jdbi jdbi = Jdbi.create(configuration.getDatabase().getUrl(),
                 Objects.requireNonNull(configuration.getDatabase().getUser()),
                 Objects.requireNonNull(configuration.getDatabase().getPassword()));

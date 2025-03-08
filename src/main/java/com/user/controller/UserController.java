@@ -31,17 +31,23 @@ public class UserController implements UserApi {
 
     @Override
     public Response getUserByEmail(String email) {
-        return null;
+        return Response.status(Response.Status.OK)
+                .entity(service.getUserByEmail(email))
+                .build();
     }
 
     @Override
     public Response updateUser(UUID id, User user) {
-        return null;
+        return Response.status(Response.Status.OK)
+                .entity(service.updateUser(id, user))
+                .build();
     }
 
     @Override
     public Response deleteUser(UUID id) {
-        return null;
+        return Response.status(Response.Status.OK)
+                .entity(service.deleteUser(id))
+                .build();
     }
 
 }

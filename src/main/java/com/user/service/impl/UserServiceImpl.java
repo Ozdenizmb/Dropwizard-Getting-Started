@@ -26,17 +26,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        return repository.getByEmail(email);
     }
 
     @Override
     public User updateUser(UUID id, User user) {
-        return null;
+        return repository.update(id, user);
     }
 
     @Override
     public Boolean deleteUser(UUID id) {
-        return null;
+        return repository.delete(id);
     }
 
 }

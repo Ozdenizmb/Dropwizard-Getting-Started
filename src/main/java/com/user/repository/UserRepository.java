@@ -9,8 +9,12 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.UUID;
 
+import static com.user.repository.sql.UserSqlQueries.DELETE_QUERY;
 import static com.user.repository.sql.UserSqlQueries.INSERT_QUERY;
+import static com.user.repository.sql.UserSqlQueries.SELECT_QUERY_FOR_EMAIL;
 import static com.user.repository.sql.UserSqlQueries.SELECT_QUERY_FOR_ID;
+import static com.user.repository.sql.UserSqlQueries.UPDATE_QUERY;
+
 
 @RegisterBeanMapper(User.class)
 public interface UserRepository {
@@ -20,8 +24,14 @@ public interface UserRepository {
 
     @SqlQuery(SELECT_QUERY_FOR_ID)
     User getById(@Bind("id") UUID id);
-    User getByEmail(String email);
-    User update(UUID id, User user);
-    Boolean delete(UUID id);
+
+    @SqlQuery(SELECT_QUERY_FOR_EMAIL)
+    User getByEmail(@Bind("email") String email);
+
+    @SqlQuery(UPDATE_QUERY)
+    User update(@Bind("id") UUID id, @BindBean User user);
+
+    @SqlUpdate(DELETE_QUERY)
+    Boolean delete(@Bind("id") UUID id);
 
 }
