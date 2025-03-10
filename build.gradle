@@ -10,6 +10,14 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.dropwizard:dropwizard-core'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    implementation 'jakarta.validation:jakarta.validation-api'
+    implementation 'org.hibernate.validator:hibernate-validator'
+    implementation 'io.dropwizard:dropwizard-jdbi3:4.0.12'
+    implementation 'org.postgresql:postgresql:42.7.5'
+    implementation 'io.dropwizard.modules:dropwizard-flyway:4.0.1-2'
+    implementation 'org.flywaydb:flyway-core:9.22.3'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
